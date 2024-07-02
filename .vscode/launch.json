@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Compre4quiApplication<compre4qui>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.widneydev.compre4qui.Compre4quiApplication",
+            "projectName": "compre4qui",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
