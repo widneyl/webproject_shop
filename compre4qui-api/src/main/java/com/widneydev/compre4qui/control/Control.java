@@ -3,9 +3,7 @@ package com.widneydev.compre4qui.control;
 import org.springframework.web.bind.annotation.RestController;
 import com.widneydev.compre4qui.model.Product;
 import com.widneydev.compre4qui.repository.Repository;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,5 +39,10 @@ public class Control {
     @GetMapping("/select")
     public List<Product> select(){
         return action.findAll();
+    }
+
+    @GetMapping("/select/{id}")
+    public List<Product> selectID(@PathVariable int id){
+        return action.findById(id);
     }
 }
