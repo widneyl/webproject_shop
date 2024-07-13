@@ -5,7 +5,7 @@ export default function Register() {
     const [name, setname] = useState("");
     const [password, setPassword] = useState("");
 
-    function eventRegister(e){
+    function eventRegister(e) {
         e.preventDefault()
         console.log(`O usuario ${name} foi cadastrado com a senha ${password}`)
     }
@@ -14,27 +14,26 @@ export default function Register() {
         <div className='container'>
             <div className='row mt-5'>
 
-                <form autoComplete='off' onSubmit={eventRegister}>
+                <form>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setname(e.target.value)}/>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={name} onChange={(e) => setname(e.target.value)} />
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" autoComplete='off' onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" class="form-control" id="exampleInputPassword1" autoComplete='off' value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
 
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" onClick={eventRegister}>Submit</button>
                 </form>
             </div>
-
         </div>
     )
 }
