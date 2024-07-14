@@ -13,6 +13,7 @@ export default function Navbar() {
                         <h3><strong>Compre4qui.com</strong></h3>
                     </Link>
                     
+                    
                     {/* Sanduiche */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -25,7 +26,7 @@ export default function Navbar() {
                                 <Link to={"/"} className="nav-link active" aria-current="page">Home</Link>
                             </li>
                             <li class="nav-item">
-                                <Link to={"/"} className="nav-link">Ajuda</Link>
+                                <Link to={"/help"} className="nav-link">Ajuda</Link>
                             </li>
                             <li class="nav-item">
                                 <Link to="/register" className="nav-link">Cadastre-se</Link>
