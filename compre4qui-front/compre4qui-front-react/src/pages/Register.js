@@ -1,39 +1,40 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 
 export default function Register() {
 
     const [name, setname] = useState("");
-    const [password, setPassword] = useState("");
+    // const [password, setPassword] = useState("");
 
-    function eventRegister(e) {
-        e.preventDefault()
-        console.log(`O usuario ${name} foi cadastrado com a senha ${password}`)
+    function registerApi() {
+        fetch("http://localhost:8080/api/select")
+        .then(response => response.json())
+        .then(list =>{
+            console.log("ERRO")
+        })
     }
 
-    return (
-        <div className='container'>
-            <div className='row mt-5'>
+    // function eventRegister(e) {
+    //     e.preventDefault()
+    //     if (name !== "") {
+    //         registerApi();
+    //     }
+    //     else {
+    //         console.log("Digite seu nome");
+    //     }
+    // }
+        return (
+            <div className='container'>
+                <div className='row mt-5'>
 
-                <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={name} onChange={(e) => setname(e.target.value)} />
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" autoComplete='off' value={password} onChange={(e) => setPassword(e.target.value)} />
-                    </div>
-
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" onClick={eventRegister}>Submit</button>
-                </form>
+                    <form onSubmit={registerApi}>
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
+                            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={name} onChange={(e) => setname(e.target.value)} />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    )
-}
+        )
+    }

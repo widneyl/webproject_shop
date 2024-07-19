@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Navbar() {
     return (
         <div>
-            <nav class="navbar navbar-expand-lg bg-white pt-4">
+            <nav className="navbar navbar-expand-lg bg-white pt-4">
                 <div className="container">
                     
                     {/* Logo */}
@@ -20,15 +20,15 @@ export default function Navbar() {
                     </button>
 
                     {/* sanduiche on */}
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                        <ul class="nav">
-                            <li class="nav-item">
+                    <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                        <ul className="nav">
+                            <li className="nav-item">
                                 <Link to={"/"} className="nav-link active" aria-current="page">Home</Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to={"/help"} className="nav-link">Ajuda</Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to="/register" className="nav-link">Cadastre-se</Link>
                             </li>
                         </ul>
