@@ -1,35 +1,40 @@
-    import React, { useState } from 'react'
-    import axios from 'axios';
+import React, { useState } from 'react'
+import axios from 'axios';
 
-    export default function Register() {
+export default function Register() {
 
-        const [productName, setname] = useState("");
-        // const [password, setPassword] = useState("");
+    const [productName, setname] = useState("");
+    // const [password, setPassword] = useState("");
 
-        async function verification(e) {
-            e.preventDefault();
-            
-            if (productName.length === 0) {
-                console.log("Enter for name")
-            }
-            else {
+    // function alertSuccess(e) {
+    //     e.preventDefault();
+    //     <div class="alert alert-success alert-dismissible">
+    //         <button className="btn-close" data-bs-dismiss="alert">x</button>
+    //     </div>
+    // }
 
-                console.log("Entrou na function")
+    async function verification(e) {
+        e.preventDefault();
 
-                const dados = {
-                    name: productName
-                };
-
-                axios
-                    .post("http://localhost:8080/api/register", dados)
-                    .then((response) => {
-                        console.log(response.data)
-                    })
-                    .catch((err) => {
-                        console.log("Ocorreu um erro na requisição")
-                    })
-            }
+        if (productName.length === 0) {
+            console.log("Enter for name")
         }
+        else {
+            console.log("Entrou na function")
+
+            const dados = {
+                name: productName
+            };
+
+            axios.post("http://localhost:8080/api/register", dados)
+            .then((response) => {
+                console.log(response.data)
+            }).catch((err) => {
+                console.log("Ocorreu um erro na requisição")
+            })
+        }
+    }
+
 
     return (
 
