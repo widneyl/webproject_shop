@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import shopImage from '../imgs/shopImage.png'
 
 export default function Home() {
     return (
@@ -11,7 +12,7 @@ export default function Home() {
                      <h4 className='mt-3'>Cadastre-se <Link to={"/register"} className='text-decoration-none text-success'>aqui</Link> para iniciar</h4>
                 </div>
                 <div className='col'>
-                    <img src='https://cdn.pixabay.com/photo/2018/08/25/09/27/shop-3629607_960_720.png' width={'400px'} alt='img shop'></img>
+                    <img src={shopImage} width={'400px'} alt='img shop'></img>
                 </div>
             </div>
         </div>
