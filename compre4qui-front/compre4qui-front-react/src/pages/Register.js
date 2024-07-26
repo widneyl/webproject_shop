@@ -1,82 +1,66 @@
-import React, { useState} from 'react'
+//Pagina de registro de produto, aqui sera feito o cadastro do produto no banco de dados.
+//Requisição POST com axios
+//Formulario de cadastro do produto
+
+import React, { useState } from 'react'
 import axios from 'axios';
 
 export default function Register() {
 
-    const [productName, setname] = useState("");
-    const [productcategory, setProductCategory] = useState("");
-    const [productValue, setProductValue] = useState(false)
+    const [productName, setname] = useState(""); //State para manipular o nome do produto
+    const [productcategory, setProductCategory] = useState(""); //State para manipular a categoria do produto
+    const [productValue, setProductValue] = useState(false); //State para manipular o valor de um produto (se é um produto valido ou não)
     // const [showProducts, setShowProducts] = useState([])
 
-
+    function status() {
+        return console.log(`STATUS DO PRODUTO: ${productValue}`);
+    }
 
     //Function to verification and send for api
     async function verification(e) {
         e.preventDefault();
+        console.log("Entrou na function de verificação")
 
-        if (productName.length === 0) {
-            console.log("Enter for name")
-            console.log(`O productValue esta como ${productValue}`)
+        if (productName.length === 0 && productcategory.length === 0) { //Verifica se o nome do produto e a categoria esta vazia
+            console.log("NÂO APROVADO: Produto precisa de um nome\nNÂO APROVADO: Produto precisa de uma categoria");
+            status();
         }
         else {
-            console.log("Entrou na function")
-            console.log(`A categoria do produto é: ${productcategory}`)
+            //Se a categoria e o nome estiverem preenchidos:
+            console.log(`APROVADO: Produto possui um nome\nAPROVADO: A categoria do produto é: ${productcategory}`);
 
-
+            //Adiciona os dados obtidos do body a um JSON 'dados'
             const dados = {
                 name: productName
             };
+            //Request POST enviando os dados para a api
 
-            //Request POST
             await axios.post("http://localhost:8080/api/register", dados)
                 .then((response) => {
                     console.log(response.data)
+                    setProductValue(true); //Aprovando o produto como produto valido e cadastrado no banco de dados
+                    status();
                 }).catch((err) => {
-                    console.log("Ocorreu um erro na requisição")
+                    console.log("ATENÇÂO: Ocorreu um erro na requisição POST");
+                    status();
                 })
-
-            setProductValue(true);
         }
     }
 
-    //Retorno
+    function compriment() {
 
-    // function compriment() {
-    //     if (productValue) {
-    //         return <div>
-    //             <div>
-    //                 <h5>Você cadastrou um novo produto! Toque <button onClick={show} className='btn btn-success text-decoration-none'>aqui</button> para ver seus produtos</h5>
-    //             </div>
-    //         </div>
-    //     }
-    // }
-
-    // async function show() {
-
-    //     const req = await axios.get("http://localhost:8080/api/select")
-    //         .then((response) => response.data)
-    //         .catch((err) => console.log("Ocorreu um erro na requisição"));
-
-    //     setShowProducts(req);
-
-    //     return <div>
-    //         <ul>
-    //             {showProducts.map(obj => (<li>{obj.name}</li>))}
-    //         </ul>
-    //     </div>
-    // }
-
-
+        if (productValue) {
+            return <div><h4>Parabéns! Você acaba de cadastrar um novo produto.</h4></div>
+        }
+    }
     return (
 
         <div className='container'>
             <div className='row mt-5'>
                 <form onSubmit={verification}>
                     <div className="mb-3">
-                        {/* <label className="form-label">Product Name</label> */}
-                        <input type="text" placeholder='Product name' className="form-control" id="InputEmail1" aria-describedby="emailHelp" value={productName} onChange={(e) => setname(e.target.value)} />
 
-                        {/* <label className="form-label">What your the category product?</label> */}
+                        <input type="text" placeholder='Product name' className="form-control" id="InputEmail1" aria-describedby="emailHelp" value={productName} onChange={(e) => setname(e.target.value)} />
                         <select className="form-select mt-3" aria-label="Default select example" value={productcategory} onChange={(e) => setProductCategory(e.target.value)}>
                             <option value="">What is your product category?</option>
                             <option value="1">Technology</option>
