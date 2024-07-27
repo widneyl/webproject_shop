@@ -38,7 +38,7 @@ export default function Register() {
             await axios.post("http://localhost:8080/api/register", dados)
                 .then((response) => {
                     console.log(response.data)
-                    setProductValue(true); //Aprovando o produto como produto valido e cadastrado no banco de dados
+                    setProductValue(!productValue); //Aprovando o produto como produto valido e cadastrado no banco de dados
                     status();
                 }).catch((err) => {
                     console.log("ATENÇÂO: Ocorreu um erro na requisição POST");
@@ -48,7 +48,7 @@ export default function Register() {
     }
 
     function compriment() {
-
+        
         if (productValue) {
             return <div><h4>Parabéns! Você acaba de cadastrar um novo produto.</h4></div>
         }
